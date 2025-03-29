@@ -1,0 +1,718 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+* {margin: 0px;}
+
+.police_ecriture_nav{
+    font-size: 24px;
+    font-family: "Amatic SC", cursive;
+    line-height: 40.35px;
+    color: black;
+}
+
+textarea::placeholder {
+    color: black;  /* Texte du placeholder en noir */
+}
+
+.police_ecriture_action_petit{
+    font-size: 20px;
+    font-family: "Amatic SC", cursive;
+    color: white;
+}
+
+.police_ecriture_action_grand{
+    font-size: 26px;
+    font-family: "Amatic SC", cursive;
+    color: white;
+}
+
+.police_ecriture_photo{
+    font-size: 48px;
+    font-family: "Amatic SC", cursive;
+    color: white;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.police_ecriture_photo_carouselle{
+    font-size: 3.5vw;
+    font-family: "Amatic SC", cursive;
+    color: white;
+    font-weight: normal;
+    white-space: pre-line;
+    line-height: 0.8;
+}
+
+.section_naviguation{
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 100%;
+    display: flex; /* Utilisation du flexbox */
+    align-items: center; /* Centrage vertical de l'image */
+}
+
+.section_naviguation_logo{
+    height: 85.76px;
+    width: auto;
+    padding-left: 5%;
+    padding-bottom: 1.5%;
+    padding-top: 1.5%;
+}
+
+.section_naviguation_ensemble_boutons {
+    display: flex; /* Utiliser flexbox pour les boutons */
+    justify-content: flex-end; /* Aligner les boutons à droite */
+    flex-wrap: wrap;
+    width: 100%;
+    padding-right: 5%;
+    gap: 10px;
+}
+
+.section_naviguation_bouton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #003662;
+    width: 170px;
+    height: calc(121px/3);
+    border-radius: 10px;
+    gap: 5px;    
+}
+
+.section_naviguation_ensemble_boutons :hover{
+    background-color: #E78F00;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.section_naviguation_ensemble_boutons a{
+    color: white;
+    text-decoration: none;
+}
+
+.section_naviguation_bouton img{
+    height: 20.1px;
+}
+
+@media (max-width: 900px){
+    .section_naviguation_ensemble_boutons{
+        gap: 10px;
+        padding: calc(121px/3/2) ;
+    }
+
+    .section_naviguation_ensemble_boutons{
+        flex-direction: column;
+        align-items: flex-end;
+        padding-right: 5%;
+    }
+}
+
+
+
+.section_recherche{
+    background-image: url("Image/Icon_section_recherche/Chalet.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    position: relative;
+}
+
+.picto_logo{
+    height: 285.1px;
+    position: absolute;
+    left: 5%;
+    top: 5%;
+}
+  
+.centrage_horizontal{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: calc((500vw / 1000) + 280px);
+}
+  
+.section_recherche_premier_menu {
+    display: grid;
+    text-align: center;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de tailles égales */
+    grid-template-rows: auto;
+    justify-items: center;
+}
+  
+.section_recherche_premier_sous_menu {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 14.74px;
+    border-radius: 6.7px;
+    align-items: center;
+    display: flex;
+    width: 285.26px;
+    height: 38.86px;
+    justify-content: space-between;
+    position: relative; /* Assure que .propotition est positionné relativement à cet élément */
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 45px;
+    background-color: white;
+}
+  
+.section_recherche_premier_sous_menu img:first-child {
+    margin-right: 15px; /* Espacement de 15px entre l'icône GPS et le texte */
+}
+  
+.section_recherche_fleche{
+    transition: transform 0.2s ease-in-out;
+    height: 12px;
+    width: auto;
+    margin-left: auto;
+    margin-right: 20px;
+    transform:rotate(-90deg);
+    transform-origin: center;
+}
+
+.propotition {
+    display: none; /* Initialement caché */
+    position: absolute; /* Position absolue par rapport au parent */
+    background-color: white;
+    top: 100%; /* Positionné juste en dessous de .section_recherche_premier_sous_menu */
+    left: 0;
+    width: 100%; /* Correspond à la largeur du parent */
+    box-sizing: border-box; /* Inclut les bordures dans la largeur totale */
+    z-index: 1000; /* Assure qu'il reste au-dessus d'autres éléments */
+    text-align: center;
+    border-bottom-left-radius: 6.7px;
+    border-bottom-right-radius: 6.7px;
+    padding-bottom: 5%;
+}
+
+.rangement_fleche_mois{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rangement_mois{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.rangement_fleche_mois button{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    padding: 5px 10px;
+    font-size: 18px;
+}
+
+.rangement_fleche_mois img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.calendrier, .calendrier_2 {
+    border-collapse: collapse;
+    width: 100%; /* Prend toute la largeur disponible */
+}
+
+.jour th {
+    background-color: lightgray;
+    width: calc(100% / 7); /* 100% / 7 colonnes = 14.28% */
+    text-align: center;
+    padding: 10px 0;
+}
+
+#jour-actuel, #jour-actuel_2{
+    font-weight: bold;
+    border-radius: 6.7px;
+}
+
+.jour-button, .jour-button_2{
+    height: 100%;
+    width: 100%;
+    all: unset;
+}
+
+.rangement_destination_ecriture{
+    display: flex;
+    align-items: center;
+}
+
+.destination_ecriture {
+    width: 180px;  /* Prend toute la largeur disponible */
+    height: 2%; /* Hauteur définie pour le rectangle */
+    resize: none;  /* Empêche le redimensionnement du champ */
+    outline: none;
+    border: none;
+}
+
+.rangement_choix_cochables{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox_departement_ville img {
+    width: 18px;
+    height: auto;
+    cursor: pointer;
+}
+
+.rangement_choix_cochable{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.alerte_recherche{
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.bouton_lieu_trouver{
+    all: unset;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.type_personnes_et_nombre{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.type_personnes{
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.type_personnes_adulte_image{
+    object-fit: contain;
+    height: calc(100%/2);
+    width: auto;
+}
+
+.type_personnes_enfant_image{
+    object-fit: contain;
+    height: calc(100%/2);
+    width: auto;
+}
+
+.type_personnes_texte{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titre_personnes{
+    font-size: 18px;
+}
+
+.sous_titre_personne{
+    font-size: 13px;
+}
+
+.nombre_personne{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 18px;
+}
+
+.rangement_bouton_plus, .rangement_bouton_moins{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: calc(100%/5);
+}
+
+.bouton_plus, .bouton_moins{
+    background-color: white;
+    border: none; /* Optionnel : pour retirer la bordure du bouton */
+    display: inline-block;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.image_bouton_plus, .image_bouton_moins{
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.rangement_nombre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    height: 100%;
+    width: calc(100%/3);
+}
+
+.animaux{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+}
+
+.checkbox_animaux{
+    padding-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 8%;
+}
+
+.image_checkbox_animaux{
+    height: auto;
+    width: 100%;
+}
+
+.rangement_texte_animaux{
+    padding-left: 10px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.texte_animaux{
+    font-size: 18px;
+    padding: 0;
+}
+
+
+.section_recherche_premier_sous_menu:hover .propotition {
+    display: block; /* Devient visible au survol */
+}
+
+.section_recherche_premier_sous_menu:hover{
+    border-top: 6.7px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.section_recherche_premier_sous_menu:hover .section_recherche_fleche{
+    transition: transform 0.2s ease-in-out;
+    transform:rotate(0deg);
+    transform-origin: center;
+
+}
+
+@media (max-width: 1080px) {
+    .section_recherche_premier_menu {
+      grid-template-columns: repeat(2, 1fr); /* Passe à 2 colonnes */
+    }
+}
+
+@media (max-width: 730px) {
+    .section_recherche_premier_menu {
+        grid-template-columns: repeat(1, 1fr); /* Passe à 2 colonnes */
+    }
+}
+
+.bouton_recherche_centrage{
+    display: flex;
+    justify-content: center;
+}
+
+.bouton_recherche{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 285.26px;
+    height: 38.86px;
+    color: white;
+    background-color: #003662;
+    border-radius: 6.7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 14.74px;
+    margin-bottom: 45px;
+    text-decoration: none;
+}
+
+.bouton_recherche:hover{
+    background-color: #E78F00;
+}
+
+
+.bouton_recherche_centrage_best_destination{
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+
+.logement_insolite h1{
+    padding-top: 60.3px;
+    padding-left: 50px;
+    font-weight: 400;
+    font-weight: bold;
+    font-size: 48px;
+}
+
+.best_of_destination h1{
+    padding-top: 60.3px;
+    padding-left: 50px;
+    font-weight: 400;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 2%;
+}
+
+.carouselle, .carouselle_2{
+    height: 400px;
+    position: relative;
+    display: flex; /* Utilisation de flexbox pour placer les éléments horizontalement */
+    align-items: center; /* Centrer verticalement les éléments */
+    justify-content: center;
+    padding: 0 calc((100vw / 4) / 2);
+    overflow: hidden;
+}
+
+.prev, .prev_2 { /* Conteneur de l'image */
+    position: absolute; /* Position absolue pour bien placer la flèche */
+    right: 90%; /* Ajuste selon le besoin */
+    z-index: 10; /* S’assure qu'elle est visible */
+}
+
+.next, .next_2 { /* Conteneur de l'image */
+    position: absolute; /* Position absolue pour bien placer la flèche */
+    left: 90%; /* Ajuste selon le besoin */
+    z-index: 10; /* S’assure qu'elle est visible */
+}
+
+.prev img, .prev_2 img, .next img, .next_2 img{
+    height: 100%;
+    width: auto;
+}
+
+
+.slides, .slides_2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: calc(100vw / 4 * 3); /* Largeur pour 3 images visibles */
+}
+
+button.prev, button.next, button.prev_2, button.next_2{
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute; 
+    border: none;
+    cursor: pointer;
+    height: 13%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logement, .logement_2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Crée un contexte pour positionner les éléments */
+    width: 100%; /* Ajuste selon la taille de ton image */
+    height: auto; /* Permet à l'image de garder ses proportions */
+}
+
+.logement img {
+    width: calc(100vw / 4); /* L'image prend toute la largeur du conteneur */
+    height: 80%;
+}
+
+.logement_2 img {
+    width: calc(100vw / 4); /* L'image prend toute la largeur du conteneur */
+    height: 120%;
+}
+
+.logement h2, .logement_2 h2{
+    position: absolute; /* Positionne le texte par rapport au conteneur */
+    top: 75%; /* Centré verticalement */
+    left: 50%; /* Centré horizontalement */
+    transform: translate(-50%, -50%); /* Ajuste l'alignement */
+    text-align: center; /* Centre le texte */
+}
+
+
+.section_best_of_inspiration {
+    background-color: #565243;
+    padding-top: calc(4%*1.2);
+}
+
+.section_best_of_inspiration h1{
+    color: white;
+    margin-left: calc((100vw*2/18)/2);
+    margin-bottom: 4%;
+}
+
+.inspirations {
+    padding-left: calc(100vw*2/18);
+    padding-right: calc(100vw*2/18);
+}
+
+:root {
+    --gap-size: 60px; /* Définir la variable */
+}
+
+.rangement_inspiration{
+    display: flex;
+    flex-wrap: wrap; /* Permet de répartir les éléments sur plusieurs lignes */
+    gap: var(--gap-size); /* Ajoute un espace entre les colonnes et les lignes */
+    padding-bottom: 4%;
+}
+
+.inspiration {
+    position: relative;
+    width: calc(50% - (var(--gap-size)/2)); /* Deux colonnes avec un espacement de 10px entre elles */
+    height: 250px; /* Définit une hauteur fixe */
+    overflow: hidden; /* Coupe le contenu qui dépasse */
+}
+
+.inspiration:hover img{
+    filter: brightness(75%); /* Réduit la luminosité de l'image à 50% */
+}
+
+.inspiration:hover{
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.inspiration img {
+    width: 100%; /* L'image occupe toute la largeur */
+    height: 100%; /* L'image occupe toute la hauteur */
+    object-fit: cover; /* Adapte l'image au conteneur sans la déformer */
+}
+
+.inspiration h2 {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .rangement_inspiration {
+        flex-direction: column; /* Les éléments passent en une seule colonne */
+        align-items: center; /* Aligne les éléments au centre */
+        text-align: center;
+        justify-content: center;
+    }
+
+    .inspiration {
+        width: 100%; /* Les éléments occupent toute la largeur */
+    }
+    
+    /* Ajuste le padding à droite pour la section */
+    .inspirations {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+}
+
+.footer{
+    background-color: #565243;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    height: auto;
+    width: 100%;
+    box-sizing: border-box;  /* Inclut le padding dans la largeur totale */
+}
+
+.rangement_footer{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.footer_ensemble_boutons {
+    display: flex; /* Utiliser Flexbox */
+    flex-direction: column; /* Aligne les éléments en colonne (verticalement) */
+    width: auto;
+    gap: 10px;
+}
+
+.footer_logo img{
+    height: 120px;
+    width: auto;
+    padding: 20px;
+    background-color: white;
+}
+
+.footer_ensemble_boutons :hover{
+    background-color: #E78F00;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.footer_ensemble_boutons a{
+    color: white;
+    text-decoration: none;
+}
+
+.section_naviguation_bouton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #003662;
+    width: 170px;
+    height: calc(121px/3);
+    border-radius: 10px;
+    gap: 5px;    
+}
+
+.footer_resaux_image img{
+    height: 50px;  
+}
+
+.footer_resaux_image{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.footer_resaux{
+    display: grid;
+    grid-template-rows: repeat(2, auto); /* Crée deux row de taille égale */
+    justify-items: center; /* Centre les éléments horizontalement dans chaque colonne */
+    justify-content: center;
+    gap: 10px; /* Espacement entre les éléments */
+}
+
+.mention_legal{
+    color: white;
+    font-weight: normal;
+}
+
+.resaux{
+    margin-left: 5px;
+    margin-right: 5px;
+}

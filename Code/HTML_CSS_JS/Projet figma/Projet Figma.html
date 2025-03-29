@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title>Première page</title>
+            <meta charset="utf-8">
+            <link rel="stylesheet" href="Projet Figma.css">
+        </head>
+        <body>
+            <div class="section_naviguation">
+                <img class="section_naviguation_logo" src="Entier.png" alt="Logo Insolite">
+                <div class="section_naviguation_ensemble_boutons">
+                    <a href="">
+                        <div class="section_naviguation_bouton">
+                            <img src="Image/Icon/Point_GPS.png" alt="">
+                            <p class="police_ecriture_action_petit">Destinations</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="section_naviguation_bouton">
+                            <img src="Image/Icon/Maison.png" alt="">
+                            <p class="police_ecriture_action_petit">Hébergements</p>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="section_naviguation_bouton">
+                            <img src="Image/Icon/Ampoule.png" alt="">
+                            <p class="police_ecriture_action_petit">Inspirations</p>
+                        </div>
+                    </a>
+                </div>
+            </div>   
+
+            <div class="section_recherche">
+                <img class="picto_logo" src="Picto + slogan.png" alt="">
+                <div class="centrage_horizontal">
+                    <div class="section_recherche_premier_menu">
+                        <div class="section_recherche_premier_sous_menu">
+                            <img src="Image/Icon_section_recherche/Point_GPS.png" alt="Icone GPS">
+                            <form class="rangement_destination_ecriture">
+                                <textarea class="destination_ecriture police_ecriture_nav" name="html_input" rows="1" cols="10" placeholder="Destination"></textarea>
+                            </form>
+                            <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
+                            <div class="propotition">
+                                <div class="rangement_choix_cochables">
+                                    <div class="rangement_choix_cochable">
+                                        <div class="checkbox_departement_ville">
+                                            <input type="checkbox" value="1" id="checkboxOneInputDepartement">
+                                            <img for="checkboxOneInputDepartement" class="image_checkbox_departement" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
+                                        </div>
+                                        <p>Departement</p>
+                                    </div>
+                                    <div class="rangement_choix_cochable">
+                                        <div class="checkbox_departement_ville">
+                                            <input type="checkbox" value="1" id="checkboxOneInputVille">
+                                            <img for="checkboxOneInputVille" class="image_checkbox_ville" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
+                                        </div>
+                                        <p>Ville</p>
+                                    </div>
+                                </div>
+                                <div class="lieu_proposer"></div>
+                            </div>
+                        </div>
+                        <div class="section_recherche_premier_sous_menu">
+                            <img src="Image/Icon_section_recherche/Ampoule.png" alt="Icone GPS">
+                            <p class="police_ecriture_nav">Hébergement</p>
+                            <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
+                            <div class="propotition">
+                                <p>Propotition1</p>
+                                <p>Propotition2</p>
+                                <p>Propotition3</p>
+                                <p>Propotition4</p>
+                                <p>Propotition5</p>
+                                <p>Propotition6</p>
+                            </div>
+                        </div>
+                        <div class="section_recherche_premier_sous_menu">
+                            <img src="Image/Icon_section_recherche/Parasol.png" alt="Icone GPS">
+                            <p class="police_ecriture_nav">Thématique</p>
+                            <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
+                            <div class="propotition">
+                                <p>Propotition1</p>
+                                <p>Propotition2</p>
+                                <p>Propotition3</p>
+                                <p>Propotition4</p>
+                                <p>Propotition5</p>
+                                <p>Propotition6</p>
+                            </div>
+                        </div>
+                        <div class="section_recherche_premier_sous_menu">
+                            <img src="Image/Icon_section_recherche/Calendrier.png" alt="Icone GPS">
+                            <p class="date_arriver police_ecriture_nav">Date d'arrivée</p>
+                            <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
+                            <div class="propotition">
+                                <div class="rangement_fleche_mois">
+                                    <button class="fleche_calendrier" onclick="changerMois(-1)">
+                                        <img class="fleche_calendrier_gauche" src="Image/Carousel/Flèche_gauche.png">
+                                    </button>
+                                    <div class="rangement_mois">
+                                        <h2 class="mois-annee"></h2>
+                                    </div>
+                                    <button class="fleche_calendrier" onclick="changerMois(+1)">
+                                        <img class="fleche_calendrier_droite" src="Image/Carousel/Flèche_droite.png">
+                                    </button>
+                                </div>
+                                <table class="calendrier">
+                                    <thead>
+                                        <tr class="jour">
+                                            <th>Lun</th> <th>Mar</th> <th>Mer</th> <th>Jeu</th> <th>Ven</th> <th>Sam</th> <th>Dim</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="section_recherche_premier_sous_menu">
+                            <img src="Image/Icon_section_recherche/Calendrier.png" alt="Icone GPS">
+                            <p class="date_arriver_2 police_ecriture_nav">Date de départ</p>
+                            <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
+                            <div class="propotition">
+                                <div class="rangement_fleche_mois">
+                                    <button class="fleche_calendrier" onclick="changerMoisSecond(-1)">
+                                        <img class="fleche_calendrier_gauche" src="Image/Carousel/Flèche_gauche.png">
+                                    </button>
+                                    <div class="rangement_mois">
+                                        <h2 class="mois-annee_2"></h2>
+                                    </div>
+                                    <button class="fleche_calendrier" onclick="changerMoisSecond(+1)">
+                                        <img class="fleche_calendrier_droite" src="Image/Carousel/Flèche_droite.png">
+                                    </button>
+                                </div>
+                                <table class="calendrier_2">
+                                    <thead>
+                                        <tr class="jour">
+                                            <th>Lun</th> <th>Mar</th> <th>Mer</th> <th>Jeu</th> <th>Ven</th> <th>Sam</th> <th>Dim</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="section_recherche_premier_sous_menu">
+                            <img src="Image/Icon_section_recherche/Personne.png" alt="Icone GPS">
+                            <p id="texte_nombre_personne" class="police_ecriture_nav">Nombre de personnes</p>
+                            <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
+                            <div class="propotition">
+
+                                <div class="type_personnes_et_nombre">
+                                    <div class="type_personnes">
+                                        <img class="type_personnes_adulte_image" src="Image/Icon_section_recherche/Nb_personne/Icon_personne/Parent.png" alt="">
+                                        <div class="type_personnes_texte">
+                                            <p class="titre_personnes">Adulte</p>
+                                            <p class="sous_titre_personne">18 ans et plus</p>
+                                        </div>
+                                    </div>
+                                    <div class="nombre_personne">
+                                        <div class="rangement_bouton_moins">
+                                            <button class="bouton_moins" id="bouton_moins_adulte">
+                                                <img class="image_bouton_moins" id="image_bouton_moins_adulte" src="Image/Icon_section_recherche/Nb_personne/Bouton/bouton_moins_gris.png" alt="">
+                                            </button>
+                                        </div>
+                                        <div class="rangement_nombre" id="rangement_nombre_adulte">
+                                            <h2 id="nombre_adulte">0</h2>
+                                        </div>
+                                        <div class="rangement_bouton_plus">
+                                            <button class="bouton_plus" id="bouton_plus_adulte">
+                                                <img class="image_bouton_plus" id="image_bouton_plus_adulte" src="Image/Icon_section_recherche/Nb_personne/Bouton/bouton_plus_orange.png" alt="">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="type_personnes_et_nombre">
+                                    <div class="type_personnes">
+                                        <img class="type_personnes_enfant_image" src="Image/Icon_section_recherche/Nb_personne/Icon_personne/Enfant.png" alt="">
+                                        <div class="type_personnes_texte">
+                                            <p class="titre_personnes">Enfant</p>
+                                            <p class="sous_titre_personne">0 à 17 ans</p>
+                                        </div>
+                                    </div>
+                                    <div class="nombre_personne">
+                                        <div class="rangement_bouton_moins">
+                                            <button class="bouton_moins" id="bouton_moins_enfant">
+                                                <img class="image_bouton_moins" id="image_bouton_moins_enfant" src="Image/Icon_section_recherche/Nb_personne/Bouton/bouton_moins_gris.png" alt="">
+                                            </button>
+                                        </div>
+                                        <div class="rangement_nombre" id="rangement_nombre_enfant">
+                                            <h2 id="nombre_enfant">0</h2>
+                                        </div>
+                                        <div class="rangement_bouton_plus">
+                                            <button class="bouton_plus" id="bouton_plus_enfant">
+                                                <img class="image_bouton_plus" id="image_bouton_plus_enfant" src="Image/Icon_section_recherche/Nb_personne/Bouton/bouton_plus_orange.png" alt="">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="animaux">
+                                    <div class="checkbox_animaux">
+                                        <input type="checkbox" value="1" id="checkbox_animal">
+                                        <label class="label_img" for="checkbox_animal">
+                                            <img class="image_checkbox_animaux" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
+                                        </label>
+                                    </div>
+                                    <div class="rangement_texte_animaux">
+                                        <p class="texte_animaux">Les animaux domestiques sont admis</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bouton_recherche_centrage">
+                    <a class="bouton_recherche police_ecriture_action_grand" href="">rechercher</a>
+                </div> 
+            </div>
+
+            <div class="logement_insolite">
+                <h1>Découvrez nos hébergements insolites</h1>
+                <div class="carouselle">
+                    <button class="prev"><img src="Image/Carousel/Flèche_gauche.png"></button>
+                    <div class="slides">
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Cabane.png" alt="">
+                            <h2 class="police_ecriture_photo_carouselle">Cabane</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Yourte.png" alt="">
+                            <h2 class="police_ecriture_photo_carouselle">Yourte</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Cabane_sur_pilotis.png" alt="">
+                            <h2 class="police_ecriture_photo_carouselle">Cabane sur pilotis</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Cabane_dans_les_arbres.png" alt="">
+                            <h2 class="police_ecriture_photo_carouselle">Cabane dans les arbre</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Chalet.png" alt="">
+                            <h2 class="police_ecriture_photo_carouselle">Chalet</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Igloo.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Igloo</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Tente_lac.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Tente lac</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Tente_lodge.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Tente lodge</h2>
+                        </div>
+                        <div class="logement">
+                            <img src="Image/Hebergement_insolite/Tiny_house.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Maisonette</h2>
+                        </div>
+                    </div>
+                    <button class="next"><img src="Image/Carousel/Flèche_droite.png"></button>
+                </div>
+                <div class="bouton_recherche_centrage">
+                    <a class="bouton_recherche police_ecriture_action_grand" href="">Tous nos hébergement</a>
+                </div> 
+            </div>
+
+            <div class="section_best_of_inspiration">
+                <h1>Voici quelques inspirations ...</h1>
+                <div class="inspirations">
+                    <div class="rangement_inspiration">
+                        <div class="inspiration">
+                            <img src="Image/Inspiration/Repos.png" alt=""></img>
+                            <h2 class="police_ecriture_photo">Farniente</h2>
+                        </div>
+                        <div class="inspiration">
+                            <img src="Image/Inspiration/Foret.png" alt=""></img>
+                            <h2 class="police_ecriture_photo">Grands Marcheurs</h2>
+                        </div>
+                        <div class="inspiration">
+                            <img src="Image/Inspiration/Repas.png" alt=""></img>
+                            <h2 class="police_ecriture_photo">Cuisine Local</h2>
+                        </div>
+                        <div class="inspiration">
+                            <img src="Image/Inspiration/Mer.png" alt=""></img>
+                            <h2 class="police_ecriture_photo">Bord De Mer</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="bouton_recherche_centrage">
+                    <a class="bouton_recherche police_ecriture_action_grand" href="">Toutes nos inspirations</a>
+                </div>
+            </div>
+
+            <div class="best_of_destination">
+                <h1>Nos meilleures destinations</h1>
+                <div class="carouselle_2">
+                    <button class="prev_2"><img src="Image/Carousel/Flèche_gauche.png"></button>
+                    <div class="slides_2">
+                        <div class="logement_2">
+                            <img src="Image/Meilleur_destination/Provence.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Provence</h2>
+                        </div>
+                        <div class="logement_2">
+                            <img src="Image/Meilleur_destination/Pays_de_la_loire.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Pays De La Loire</h2>
+                        </div>
+                        <div class="logement_2">
+                            <img src="Image/Meilleur_destination/Paris.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Paris</h2>
+                        </div>
+                        <div class="logement_2">
+                            <img src="Image/Meilleur_destination/Belgique.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Belgique</h2>
+                        </div>
+                        <div class="logement_2">
+                            <img src="Image/Meilleur_destination/Rome.png" alt=""></img>
+                            <h2 class="police_ecriture_photo_carouselle">Rome</h2>
+                        </div>
+                    </div>
+                    <button class="next_2"><img src="Image/Carousel/Flèche_droite.png"></button>
+                </div>
+                <div class="bouton_recherche_centrage_best_destination">
+                    <a class="bouton_recherche police_ecriture_action_grand" href="">Toutes nos destinations</a>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <div class="rangement_footer">
+                    <div class="footer_logo">
+                        <img src="Entier.png" alt="">
+                    </div>
+                    <div class="footer_ensemble_boutons">
+                        <a href="">
+                            <div class="section_naviguation_bouton">
+                                <img src="Image/Icon/Point_GPS.png" alt="">
+                                <p class="police_ecriture_action_petit">Destination</p>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="section_naviguation_bouton">
+                                <img src="Image/Icon/Maison.png" alt="">
+                                <p class="police_ecriture_action_petit">Hébergement</p>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="section_naviguation_bouton">
+                                <img src="Image/Icon/Ampoule.png" alt="">
+                                <p class="police_ecriture_action_petit">Inspiration</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="footer_resaux">
+                        <div class="footer_resaux_image">
+                            <a href="">
+                                <img class="resaux" src="Image/Resaux/Facebook.png" alt="">
+                            </a>
+                            <a href="">
+                                <img class="resaux" src="Image/Resaux/Instagram.png" alt="">
+                            </a>
+                        </div>
+                        <p class="mention_legal">Mentions Légales</p>
+                    </div>
+                </div>
+            </div>
+            <script src="JS/Carousel.js"></script>
+            <script src="JS/Carousel_2.js"></script>
+            <script src="JS/Calendrier.js"></script>
+            <script src="JS/Calendrier_2.js"></script>
+            <script src="JS/Case_destination.js"></script>
+            <script src="JS/Nombre_personne.js"></script>
+            <script src="JS/Case_animaux.js"></script>
+        </body>
+    </html>

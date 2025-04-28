@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lancer la balle avec rebond et terrain de foot</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #78c850; /* Vert du terrain */
+    }
+
+    .field {
+      position: relative;
+      width: 90vw;
+      height: 60vh;
+      background-color: #3b8e33; /* Terrain vert */
+      border: 5px solid white; /* Bordure du terrain */
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Marquage du terrain (lignes et cercle central) */
+    .field:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .field .line {
+      position: absolute;
+      background-color: white;
+    }
+
+    .field .horizontal {
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+    }
+
+    .field .vertical {
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: 2px;
+    }
+
+    /* Zones de penalty */
+    .field .penalty-area-left, .field .penalty-area-right {
+      position: absolute;
+      top: 10%;
+      width: 25%;
+      height: 80%;
+      border: 2px solid white;
+      box-sizing: border-box;
+    }
+
+    .field .penalty-area-left {
+      left: 0;
+    }
+
+    .field .penalty-area-right {
+      right: 0;
+    }
+
+    /* Balle */
+    #ball {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: red;
+      position: absolute;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="field">
+    <!-- Lignes du terrain -->
+    <div class="line horizontal"></div>
+    <div class="line vertical"></div>
+
+    <!-- Zones de penalty -->
+    <div class="penalty-area-left"></div>
+    <div class="penalty-area-right"></div>
+
+    <div id="ball"></div>
+  </div>
+
+  <script>
+    const ball = document.querySelector(".ball");
+const force = document.querySelector(".force");
+let isDragging = false;
+
+let offsetX, offsetY;
+ball.style.position = "fixed"; // La balle est en "fixed" dès le début
+force.style.position = "fixed"; // La force aussi
+
+// Initialiser la force à une taille minimale et invisible au début
+force.style.display = "none";  // Ne pas l'afficher tant que le drag ne commence pas
+force.style.width = force.style.height = "0vw";  // Taille minimale
+force.style.opacity = 0;  // Opacité à 0 au début
+
+ball.addEventListener("mousedown", (event) => {
+    isDragging = true;  // Déclenche l'état de drag
+    force.style.display = "block";  // Afficher la force au début du drag
+
+    // Calcul du centre de la balle
+    const rect = ball.getBoundingClientRect();
+    const ballcenterX = rect.left + rect.width / 2;
+    const ballcenterY = rect.top + rect.height / 2;
+
+    // Centrer la force au milieu de la balle :
+    force.style.left = (ballcenterX - force.offsetWidth / 2) + "px";
+    force.style.top = (ballcenterY - force.offsetHeight / 2) + "px";
+});
+
+document.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+        // Calcul du centre de la balle pendant le drag
+        const rect = ball.getBoundingClientRect();
+        const ballcenterX = rect.left + rect.width / 2;
+        const ballcenterY = rect.top + rect.height / 2;
+
+        // Calcul de la distance entre la souris et la balle
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        const distance = Math.sqrt(Math.pow(mouseX - ballcenterX, 2) + Math.pow(mouseY - ballcenterY, 2));
+
+        const maxSize = 5.5;
+        const forceSize = Math.min(maxSize, distance * 0.05) + 3.5;
+
+        const maxOpacity = 0.9;
+        const minOpacity = 0.5;
+        const opacity = Math.min(maxOpacity, Math.max(minOpacity, distance / 200));
+
+        force.style.width = force.style.height = `${forceSize}vw`;
+        force.style.opacity = opacity;
+
+        // Mettre à jour la position de la force pour qu'elle soit centrée sur la balle
+        force.style.left = (ballcenterX - force.offsetWidth / 2) + "px";
+        force.style.top = (ballcenterY - force.offsetHeight / 2) + "px";
+    }
+});
+
+document.addEventListener("mouseup", () => {
+    if (isDragging) {
+        isDragging = false;  // Réinitialisation de l'état de drag
+
+        // Cache la force quand on relâche la souris
+        force.style.display = "none";  // Enlever la force de l'écran
+        force.style.width = force.style.height = "0vw";  // Réinitialiser la taille de la force
+        force.style.opacity = 0;  // Réinitialiser l'opacité
+    }
+});
+
+// Ajouter un événement pour réactiver le drag si tu cliques à nouveau sur la balle
+ball.addEventListener("click", (event) => {
+    if (!isDragging) {
+        isDragging = true;
+        force.style.display = "block";  // Afficher la force immédiatement si c'est un clic supplémentaire
+
+        // Calcul du centre de la balle
+        const rect = ball.getBoundingClientRect();
+        const ballcenterX = rect.left + rect.width / 2;
+        const ballcenterY = rect.top + rect.height / 2;
+
+        // Centrer la force au milieu de la balle :
+        force.style.left = (ballcenterX - force.offsetWidth / 2) + "px";
+        force.style.top = (ballcenterY - force.offsetHeight / 2) + "px";
+    }
+});
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+    <head>
+        <title>Première page</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="CSS.css">
+    </head>
+
+    <style>
+        
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #78c850; /* Vert du terrain */
+        }
+    
+        .title{
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+        }
+
+        .score{
+            background-color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 8vw;
+            height: 8vh;  
+            border: 2px solid white;
+            border-bottom-right-radius: 50%;
+            border-bottom-left-radius: 50%;
+            margin-bottom: 5vh;
+            gap: 7%;
+            
+        }
+
+        .score p{
+            font-size: 5vh;
+            font-weight: bold;
+        }
+
+        .score_b{
+            color: #136fac; 
+        }
+
+        .score_r{
+            color: #c40505; 
+        }
+
+        .field {
+            position: relative;
+            width: calc(100vw*0.7);
+            height: calc(100vw/3);
+            background-color: #3b8e33; /* Terrain vert */
+            border: 10px solid white; /* Bordure du terrain */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .circle{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 7px solid white; /* Bordure du terrain */
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+        }
+
+        .halfway_line{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid white; /* Bordure du terrain */
+            height: 101%;
+        }
+
+        .goal_area_r{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(-90%, -50%);
+            border: 7px solid white; /* Bordure du terrain */
+            height: calc(100%/9*5);
+            width: 10%;
+        }
+
+        .goal_area_l{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(-10%, -50%);
+            border: 7px solid white; /* Bordure du terrain */
+            height: calc(100%/9*5);
+            width: 10%;
+        }
+
+        .goal_l{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0%;
+            transform: translate(-100%, -50%);
+            border: 5px solid white; /* Bordure du terrain */
+            height: calc(100%/9*3.5);
+            width: 8%;
+        }
+
+        .goal_r{
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translate(-0%, -50%);
+            border: 5px solid white; /* Bordure du terrain */
+            height: calc(100%/9*3.5);
+            width: 8%;
+        }
+
+        .ball{
+            position: absolute;
+            cursor: pointer;
+            top: 50%;
+            left: 50%;
+            background-color: red;
+            height: 4.5vw;
+            width: 4.5vw;
+            border-radius: 50%;
+        }
+
+        .force{
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background-color: #2837be;
+            height: 5vw;
+            width: 5vw;
+            left: 0%;
+            top: 0%;
+        }
+
+      </style>
+
+    <body>
+        <div class="title">
+            <h1>Titre du jeu</h1>
+        </div>
+        <div class="score">
+            <p class="score_b">0</p>
+            <p class="score_">.</p>
+            <p class="score_r">0</p>
+        </div>
+
+        <div class="field">
+            
+            <!-- Cercle du terrain -->
+            <div class="circle"></div>
+
+            <!-- zone du but du terrain -->
+            <div class="goal_area_r"></div>
+            <div class="goal_area_l"></div>
+
+            <!-- Ligne mediane du terrain -->
+            <div class="halfway_line"></div>
+
+            <!-- cage du terrain -->
+            <div class="goal_r"></div>
+            <div class="goal_l"></div>
+
+            <!-- Lignes du terrain -->
+            <div class="line horizontal"></div>
+            <div class="line vertical"></div>
+        
+            <!-- Zones de penalty -->
+            <div class="penalty-area-left"></div>
+            <div class="penalty-area-right"></div>
+        
+            <div class="ball"></div>
+            
+            <div class="force"></div>
+        </div>
+    </body> 
+    <script>
+const ball = document.querySelector(".ball");
+const force = document.querySelector(".force");
+
+let isDragging = false;
+let offsetX, offsetY;
+
+// Positionner la balle et la force en fixed dès le début
+ball.style.position = "fixed";
+force.style.position = "fixed";
+
+// Initialisation de la force à invisible et à taille nulle
+force.style.display = "none";
+force.style.width = force.style.height = "0vw";
+force.style.opacity = 0;
+
+// Lorsque la balle est cliquée, on démarre le drag
+ball.addEventListener("mousedown", (event) => {
+    isDragging = true; // Commence le drag
+
+    // Afficher la force au clic
+    force.style.display = "block"; 
+
+    // Calcul des offsets pour le déplacement de la souris
+    const rect = ball.getBoundingClientRect();
+    offsetX = event.clientX - rect.left;
+    offsetY = event.clientY - rect.top;
+
+    // Calcul du centre de la balle
+    const ballcenterX = rect.left + rect.width / 2;
+    const ballcenterY = rect.top + rect.height / 2;
+
+    // Positionner la force au centre de la balle
+    force.style.left = (ballcenterX - force.offsetWidth / 2) + "px";
+    force.style.top = (ballcenterY - force.offsetHeight / 2) + "px";
+});
+
+// Lorsque la souris se déplace, on met à jour la position de la force
+document.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+        // Calcul du centre de la balle pendant le drag
+        const rect = ball.getBoundingClientRect();
+        const ballcenterX = rect.left + rect.width / 2;
+        const ballcenterY = rect.top + rect.height / 2;
+
+        // Calcul de la distance entre la souris et la balle
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        const distance = Math.sqrt(Math.pow(mouseX - ballcenterX, 2) + Math.pow(mouseY - ballcenterY, 2));
+
+        // Modifier la taille de la force en fonction de la distance
+        const maxSize = 5.5;
+        const forceSize = Math.min(maxSize, distance * 0.05) + 3.5;
+
+        // Modifier l'opacité de la force
+        const maxOpacity = 0.9;
+        const minOpacity = 0.5;
+        const opacity = Math.min(maxOpacity, Math.max(minOpacity, distance / 200));
+
+        // Appliquer les nouvelles tailles et opacité
+        force.style.width = force.style.height = `${forceSize}vw`;
+        force.style.opacity = opacity;
+
+        // Placer la force au centre de la balle
+        force.style.left = (ballcenterX - force.offsetWidth / 2) + "px";
+        force.style.top = (ballcenterY - force.offsetHeight / 2) + "px";
+    }
+});
+
+// Lorsqu'on relâche le clic, on arrête le drag et cache la force
+document.addEventListener("mouseup", () => {
+    if (isDragging) {
+        isDragging = false; // Réinitialise l'état de drag
+        force.style.display = "none"; // Cache la force
+        force.style.width = force.style.height = "0vw"; // Réinitialise la taille
+        force.style.opacity = 0; // Réinitialise l'opacité
+    }
+});
+
+    </script>

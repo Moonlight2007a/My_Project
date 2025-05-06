@@ -397,7 +397,7 @@
                 const slopeBis = Math.atan2(dy, dx);       
                 
                 // Puissance extraite de la hauteur de la barre
-                const powerAfterMouseUp = 50*(Number(direction.style.height.replace(/[^\d.-]/g, "")));
+                const powerAfterMouseUp = (Math.exp(Number(direction.style.height.replace(/[^\d.-]/g, ""))) > 600) ? 600 : Math.exp(Number(direction.style.height.replace(/[^\d.-]/g, "")));
 
                 const deltaX = Math.cos(slopeBis) * powerAfterMouseUp;
                 const deltaY = Math.sin(slopeBis) * powerAfterMouseUp;

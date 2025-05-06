@@ -133,6 +133,7 @@
         }
 
         .player_r{
+            transition: left 0.3s ease, top 0.3s ease;
             position: absolute;
             cursor: pointer;
             background-color: #c40505;
@@ -157,6 +158,7 @@
         }
 
         .player_b{
+            transition: left 0.3s ease, top 0.3s ease;
             position: absolute;
             cursor: pointer;
             background-color: #136fac;
@@ -238,8 +240,8 @@
             <div class="player_b player8"></div>
             <div class="player_b player9"></div>
             
-            <div class="force"></div>
             <div class="direction"></div>
+            <div class="force"></div>
         </div>
     </body> 
     <script>
@@ -257,6 +259,8 @@
         const force = document.querySelector(".force");
         const direction = document.querySelector(".direction");
         const ball = document.querySelector(".ball");
+        const field = document.querySelector(".field");
+
     
         // Position des joueurs sur le terrain
         const positionTopField = [
@@ -367,15 +371,16 @@
 
                 const directionPx = window.innerWidth * ((forceSize) / 100)
                 direction.style.top = `${playerCenterY}px`
-                direction.style.left = `${playerCenterX-29}px`
+                direction.style.left = `${playerCenterX-33}px`
             }
         });
     
         // Lorsque le clic est relâché, on arrête le drag et cache la force
         document.addEventListener("mouseup", (event) => {
             if (isDragging) {
+                
                 isDragging = false; // Arrêter le drag
-                force.style.display = direction.style.display = "none"; // Cacher la force et la direction
+                force.style.display = direction.style.display = "none"; // Cacher les indicateurs
                 force.style.opacity = 0; // Réinitialiser l'opacité
 
                 const rect = dragPlayer.getBoundingClientRect();
@@ -386,28 +391,37 @@
                 const mouseX = event.clientX;
                 const mouseY = event.clientY;
 
-                let directionX = 0
-                let directionY = 0
-
-                directionY = (mouseY > playerCenterY) ? 1 : -1;
-                directionX = (mouseX < playerCenterX) ? 1 : -1;
-                console.log(directionY)
-
-                let slope = 0
-                slope = Math.abs((playerCenterY - mouseY) / (playerCenterX - mouseX))
-                const speed = 0.99
-
-                let powerAfterMouseUp = Number(direction.style.height.replace(/[^\d.-]/g, ""));
-                force.style.width = force.style.height = direction.style.height = "0vw"; // Réinitialiser la taille
-
+                // Calcul de la pente (évite la division par 0)
+                const dx = playerCenterX - mouseX;
+                const dy = playerCenterY - mouseY;
+                const slopeBis = Math.atan2(dy, dx);       
                 
-                dragPlayer.style.left = `${Number(dragPlayer.style.left.replace(/[^\d.-]/g, "")) + powerAfterMouseUp * directionX}%`
-                console.log(dragPlayer.style.top)
-                dragPlayer.style.top = `${Math.abs(Number(dragPlayer.style.top.replace(/[^\d.-]/g, ""))) * slope}%`
-                console.log(dragPlayer.style.top)
+                // Puissance extraite de la hauteur de la barre
+                const powerAfterMouseUp = 50*(Number(direction.style.height.replace(/[^\d.-]/g, "")));
 
+                const deltaX = Math.cos(slopeBis) * powerAfterMouseUp;
+                const deltaY = Math.sin(slopeBis) * powerAfterMouseUp;
+
+                // Réinitialiser la taille des éléments visuels
+                force.style.width = force.style.height = direction.style.height = "0vw";
+
+                const fieldWidth = field.offsetWidth;
+                const fieldHeight = field.offsetHeight;
+
+                // Position actuelle du joueur (en pixels)
+                let currentLeft = (parseFloat(dragPlayer.style.left) / 100) * fieldWidth;
+                let currentTop = (parseFloat(dragPlayer.style.top) / 100) * fieldHeight;
+
+
+                currentLeft += deltaX;
+                currentTop += deltaY;
+
+                dragPlayer.style.left = `${(currentLeft / fieldWidth) * 100}%`;
+                dragPlayer.style.top = `${(currentTop / fieldHeight) * 100}%`;
+                 
                 while(powerAfterMouseUp > 3){
-                    powerAfterMouseUp = powerAfterMouseUp * speed
+
+                    powerAfterMouseUp *= speed
 
                     
                 }

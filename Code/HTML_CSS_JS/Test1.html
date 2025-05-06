@@ -248,19 +248,18 @@
 
         // Tableau pour stocker les joueurs
         const players = [];
-    
+        
         // Boucle pour récupérer tous les éléments avec la classe 'player0' à 'player9' et les ajouter au tableau 'players'
         for (let i = 0; i <= 9; i++) {
             const player = document.querySelector(`.player${i}`);
             players.push(player);
         };
-    
+        
         // Sélectionner les éléments pour la force et la direction
         const force = document.querySelector(".force");
         const direction = document.querySelector(".direction");
         const ball = document.querySelector(".ball");
         const field = document.querySelector(".field");
-
     
         // Position des joueurs sur le terrain
         const positionTopField = [
@@ -294,7 +293,7 @@
         let isDragging = false; // Variable pour savoir si un joueur est en train d'être déplacé
         let offsetX, offsetY; // Variables pour les décalages de la souris
         let dragPlayer = null; // Référence au joueur en cours de drag
-
+    
         // Initialisation de la force et direction à invisible et de taille nulle
         force.style.display = "none";
         force.style.width = force.style.height = "0vw";
@@ -368,7 +367,7 @@
                 const forcePx = window.innerWidth * (forceSize / 100); // Conversion de vw à px
                 force.style.left =  `${playerCenterX - forcePx / 2}px`; // Positionner la force horizontalement
                 force.style.top =  `${playerCenterY - forcePx / 2}px`; // Positionner la force verticalement
-
+    
                 const directionPx = window.innerWidth * ((forceSize) / 100)
                 direction.style.top = `${playerCenterY}px`
                 direction.style.left = `${playerCenterX-33}px`
@@ -382,15 +381,15 @@
                 isDragging = false; // Arrêter le drag
                 force.style.display = direction.style.display = "none"; // Cacher les indicateurs
                 force.style.opacity = 0; // Réinitialiser l'opacité
-
+    
                 const rect = dragPlayer.getBoundingClientRect();
-
+    
                 const playerCenterX = rect.left + rect.width / 2;
                 const playerCenterY = rect.top + rect.height / 2;
-
+    
                 const mouseX = event.clientX;
                 const mouseY = event.clientY;
-
+    
                 // Calcul de la pente (évite la division par 0)
                 const dx = playerCenterX - mouseX;
                 const dy = playerCenterY - mouseY;
@@ -398,33 +397,30 @@
                 
                 // Puissance extraite de la hauteur de la barre
                 const powerAfterMouseUp = (Math.exp(Number(direction.style.height.replace(/[^\d.-]/g, ""))) > 600) ? 600 : Math.exp(Number(direction.style.height.replace(/[^\d.-]/g, "")));
-
+    
                 const deltaX = Math.cos(slopeBis) * powerAfterMouseUp;
                 const deltaY = Math.sin(slopeBis) * powerAfterMouseUp;
-
+    
                 // Réinitialiser la taille des éléments visuels
                 force.style.width = force.style.height = direction.style.height = "0vw";
-
+    
                 const fieldWidth = field.offsetWidth;
                 const fieldHeight = field.offsetHeight;
-
+    
                 // Position actuelle du joueur (en pixels)
                 let currentLeft = (parseFloat(dragPlayer.style.left) / 100) * fieldWidth;
                 let currentTop = (parseFloat(dragPlayer.style.top) / 100) * fieldHeight;
-
-
+    
                 currentLeft += deltaX;
                 currentTop += deltaY;
-
+    
                 dragPlayer.style.left = `${(currentLeft / fieldWidth) * 100}%`;
                 dragPlayer.style.top = `${(currentTop / fieldHeight) * 100}%`;
-                 
+    
                 while(powerAfterMouseUp > 3){
-
                     powerAfterMouseUp *= speed
-
-                    
                 }
             }
         });
     </script>
+    

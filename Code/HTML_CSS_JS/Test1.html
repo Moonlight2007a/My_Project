@@ -229,22 +229,24 @@
 
             <div class="ball"></div>
         
-            <div class="player_r player0"></div>
-            <div class="player_r player1"></div>
-            <div class="player_r player2"></div>
-            <div class="player_r player3"></div>
-            <div class="player_r player4"></div>
-            <div class="player_b player5"></div>
-            <div class="player_b player6"></div>
-            <div class="player_b player7"></div>
-            <div class="player_b player8"></div>
-            <div class="player_b player9"></div>
+            <div class="player_b player0"></div>
+            <div class="player_b player1"></div>
+            <div class="player_b player2"></div>
+            <div class="player_b player3"></div>
+            <div class="player_b player4"></div>
+            <div class="player_r player5"></div>
+            <div class="player_r player6"></div>
+            <div class="player_r player7"></div>
+            <div class="player_r player8"></div>
+            <div class="player_r player9"></div>
             
             <div class="direction"></div>
             <div class="force"></div>
         </div>
     </body> 
     <script>
+
+        let gameRound = "r"
 
         // Tableau pour stocker les joueurs
         const players = [];
@@ -303,7 +305,7 @@
     
         // Quand un joueur est cliqué, on démarre le drag
         players.forEach((player, index) => {
-            if (player) { // Vérifier que le joueur existe
+            if (player){// Vérifier que le joueur existe
                 player.addEventListener("mousedown", (event) => {
                     dragPlayer = player; // Référence au joueur sélectionné
                     isDragging = true; // Commencer le drag
@@ -420,6 +422,8 @@
                 while(powerAfterMouseUp > 3){
                     powerAfterMouseUp *= speed
                 }
+
+
             }
         });
     </script>

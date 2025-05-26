@@ -27,8 +27,37 @@
                             <p class="police_ecriture_action_petit">Inspirations</p>
                         </div>
                     </a>
-                </div>
-            </div>   
+                    <div class="section_naviguation_bouton section_naviguation_bouton_connection">
+                        <img src="Image/Icon/Point_GPS.png" alt="">
+                        <p class="police_ecriture_action_petit">Se connecter</p>
+                        <div class="propotition propotition_connection">
+                            <div class="checkebox_inscription">
+                                <p>Inscription ?</p>
+                                <div class="checkbox">
+                                    <input type="checkbox" value="1" id="checkbox_inscription">
+                                    <img for="checkbox_inscription" class="image_checkbox_inscription" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
+                                </div>                            
+                            </div>
+                            <div class="rangement_mail">
+                                <img class="image_mail" src="Image/Icon/Mail.png" alt="">
+                                <input class="mail" name="" id="" placeholder="Email"></input>
+                            </div>
+                            <div class="rangement_mdp">
+                                <img class="image_mdp" src="Image/Icon/Mot_de_passe.png" alt="">
+                                <input type="password" class="mdp" name="" id="mdp" placeholder="Mot de passe"></input>
+                                <div class="checkbox">
+                                    <input type="checkbox" value="1" id="checkbox_mdp" class="checkbox_mdp">
+                                    <img for="checkbox_mdp" class="image_checkbox_mdp" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
+                                </div>
+                            </div>
+                            <div class="inscription"></div>
+                            <div>
+                                <button class="validation_inscription police_ecriture_action_petit" onclick="validation_inscription()">Valider</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+            </div>
 
             <div class="section_recherche">
                 <img class="picto_logo" src="Picto + slogan.png" alt="">
@@ -37,20 +66,20 @@
                         <div class="section_recherche_premier_sous_menu">
                             <img src="Image/Icon_section_recherche/Point_GPS.png" alt="Icone GPS">
                             <form class="rangement_destination_ecriture">
-                                <textarea class="destination_ecriture police_ecriture_nav" name="html_input" rows="1" cols="10" placeholder="Destination"></textarea>
+                                <input class="destination_ecriture police_ecriture_nav" name="html_input" rows="1" cols="10" placeholder="Destination"></input>
                             </form>
                             <img class="section_recherche_fleche" src="Image/Icon_section_recherche/Fleche.png" alt="Fleche">
                             <div class="propotition">
                                 <div class="rangement_choix_cochables">
                                     <div class="rangement_choix_cochable">
-                                        <div class="checkbox_departement_ville">
+                                        <div class="checkbox">
                                             <input type="checkbox" value="1" id="checkboxOneInputDepartement">
                                             <img for="checkboxOneInputDepartement" class="image_checkbox_departement" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
                                         </div>
                                         <p>Departement</p>
                                     </div>
                                     <div class="rangement_choix_cochable">
-                                        <div class="checkbox_departement_ville">
+                                        <div class="checkbox">
                                             <input type="checkbox" value="1" id="checkboxOneInputVille">
                                             <img for="checkboxOneInputVille" class="image_checkbox_ville" src="Image/Icon_section_recherche/Animaux/Checkbox_vide.png" alt="">
                                         </div>
@@ -361,6 +390,7 @@
                             </a>
                         </div>
                         <p class="mention_legal">Mentions Légales</p>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -371,5 +401,6 @@
             <script src="JS/Case_destination.js"></script>
             <script src="JS/Nombre_personne.js"></script>
             <script src="JS/Case_animaux.js"></script>
+            <script src="JS/Case_inscription.js"></script>
         </body>
     </html>

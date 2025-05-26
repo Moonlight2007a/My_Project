@@ -30,6 +30,9 @@ textarea::placeholder {
     color: white;
     font-weight: normal;
     white-space: nowrap;
+    background-color: #000000bb;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .police_ecriture_photo_carouselle{
@@ -39,6 +42,10 @@ textarea::placeholder {
     font-weight: normal;
     white-space: pre-line;
     line-height: 0.8;
+    background-color: #000000bb;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
 }
 
 .section_naviguation{
@@ -70,6 +77,7 @@ textarea::placeholder {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     background-color: #003662;
     width: 170px;
     height: calc(121px/3);
@@ -77,10 +85,45 @@ textarea::placeholder {
     gap: 5px;    
 }
 
-.section_naviguation_ensemble_boutons :hover{
+.validation_inscription{
+    text-decoration: none;
+    all: unset;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-family: "Amatic SC", cursive;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #003662;
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    gap: 5px;    
+    margin-top: 5%;
+}
+
+.section_naviguation_bouton:hover, .validation_inscription:hover{
     background-color: #E78F00;
     cursor: pointer;
+}
+
+.section_naviguation_ensemble_boutons :hover .propotition{
+    background-color: white;
     border-radius: 10px;
+}
+
+.section_naviguation_bouton_connection:hover{
+    border-radius: 10px 10px 0 0;
+}
+
+
+
+.propotition:hover{
+    background-color: white;
+    cursor: default;
 }
 
 .section_naviguation_ensemble_boutons a{
@@ -92,7 +135,7 @@ textarea::placeholder {
     height: 20.1px;
 }
 
-@media (max-width: 900px){
+@media (max-width: 1080px){
     .section_naviguation_ensemble_boutons{
         gap: 10px;
         padding: calc(121px/3/2) ;
@@ -169,6 +212,11 @@ textarea::placeholder {
     transform-origin: center;
 }
 
+.section_recherche_premier_sous_menu:hover .propotition, .section_naviguation_bouton:hover .propotition{
+    display: block; /* Devient visible au survol */
+}
+
+
 .propotition {
     display: none; /* Initialement caché */
     position: absolute; /* Position absolue par rapport au parent */
@@ -176,12 +224,67 @@ textarea::placeholder {
     top: 100%; /* Positionné juste en dessous de .section_recherche_premier_sous_menu */
     left: 0;
     width: 100%; /* Correspond à la largeur du parent */
-    box-sizing: border-box; /* Inclut les bordures dans la largeur totale */
+    box-sizing: border-box; /* les bordures dans la largeur totale */
     z-index: 1000; /* Assure qu'il reste au-dessus d'autres éléments */
     text-align: center;
     border-bottom-left-radius: 6.7px;
     border-bottom-right-radius: 6.7px;
     padding-bottom: 5%;
+}
+
+.checkebox_inscription{
+    display: flex;
+    justify-content: center;
+}
+
+.propotition_connection{
+    padding-right: 5%;
+    padding-left: 5%;
+    padding-top: 5%;
+    border: #E78F00 0.1vw solid;
+    border-radius: 0 0 10px 10px !important;
+}
+
+.checkebox_inscription p{
+    padding-right: 15px;
+}
+
+.rangement_mail, .rangement_mdp, .rangement_confirme_mdp, .rangement_condition_utilisation{
+    margin-top: 5%;
+    display: flex;
+    align-items: center;
+}
+
+.rangement_condition_utilisation{
+    justify-content: space-evenly;
+}
+
+.mail, .mdp, .confirme_mdp{
+    width: 100%;
+    height: 100%;
+}
+
+.image_mail, .image_mdp, .image_confirme_mdp{
+    margin-right: 5px;
+    height: 10px;
+    width: 25px;
+}
+
+.image_checkbox_mdp{
+    height: 100%;
+    width: 100%;
+    padding-left: 5px;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+}
+
+.lien_condition_utilisation{
+    color: black !important;
+    font-size: 11px;
+    text-decoration: underline !important;
 }
 
 .rangement_fleche_mois{
@@ -247,6 +350,10 @@ textarea::placeholder {
     border: none;
 }
 
+.destination_ecriture::placeholder {
+    color: black;
+}
+
 .rangement_choix_cochables{
     display: flex;
     justify-content: space-around;
@@ -257,7 +364,7 @@ input[type="checkbox"] {
     display: none;
 }
 
-.checkbox_departement_ville img {
+.checkbox img {
     width: 18px;
     height: auto;
     cursor: pointer;
@@ -401,11 +508,6 @@ input[type="checkbox"] {
 .texte_animaux{
     font-size: 18px;
     padding: 0;
-}
-
-
-.section_recherche_premier_sous_menu:hover .propotition {
-    display: block; /* Devient visible au survol */
 }
 
 .section_recherche_premier_sous_menu:hover{
@@ -677,16 +779,6 @@ button.prev, button.next, button.prev_2, button.next_2{
     text-decoration: none;
 }
 
-.section_naviguation_bouton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #003662;
-    width: 170px;
-    height: calc(121px/3);
-    border-radius: 10px;
-    gap: 5px;    
-}
 
 .footer_resaux_image img{
     height: 50px;  
@@ -715,4 +807,21 @@ button.prev, button.next, button.prev_2, button.next_2{
 .resaux{
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.rangement_inscription{
+    display: flex;
+    padding-top: 1.5vw;
+    padding: 1.5vw 10vw 1.5vw 4vw;
+    justify-content: space-between;
+}
+
+.picto_logo_inscription{
+    height: 285.1px;
+}
+
+.inscription_connexion{
+    border-radius: 10px;
+    height: 500px;
+    background-color: rgba(0, 0, 0, 0.8);
 }
